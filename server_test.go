@@ -40,3 +40,21 @@ func TestServeMux(t *testing.T) {
 		panic(err)
 	}
 }
+
+func TestRequest(t *testing.T) {
+	var handler http.HandlerFunc = func(writer http.ResponseWriter, request *http.Request) {
+		fmt.Fprintln(writer, request.Method)
+		fmt.Fprintln(writer, request.RequestURI)
+		fmt.Fprintln(writer, request.Host)
+	}
+
+	server := http.Server{
+		Addr:    "localhost:3000",
+		Handler: handler,
+	}
+
+	err := server.ListenAndServe()
+	if err != nil {
+		panic(err)
+	}
+}
