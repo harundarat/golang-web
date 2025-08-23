@@ -18,9 +18,7 @@ func TestHandler(t *testing.T) {
 	}
 
 	err := server.ListenAndServe()
-
 	if err != nil {
 		panic(err)
 	}
-
 }
